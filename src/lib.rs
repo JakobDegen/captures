@@ -49,7 +49,7 @@
 //!
 //! # Usage
 //!
-//! The `captures::capture` and `captures::capture_only` macros are invoked with a comma-seperated
+//! The `capture!` and `capture_only!` macros are invoked with a comma-seperated
 //! list of "capture directives" and finally a closure expression. One example of a capture
 //! directive is the `clone x` directive, which indicates that a clone of `x` should be captured in
 //! place of `x`. As such, the example above can be re-written to:
@@ -159,7 +159,7 @@
 //! captured by value, correctly inherit their mutability. As such, the `mut` prefix is not
 //! supported on these directives.
 //!
-//! # [`capture_only`]
+//! # `capture_only`
 //!
 //! The `capture_only` macro behaves exactly like the `capture` macro, with the exception that it
 //! additionally prevents any variables that do not have an associated capture directive from
@@ -209,7 +209,7 @@ mod parse;
 use changes::*;
 use parse::*;
 
-/// Allows specifying how a closure should capture variables.
+/// Captures variables into a closure with special semantics.
 ///
 /// See the [crate level documentation][`crate`] for more info.
 #[proc_macro]
@@ -217,7 +217,7 @@ pub fn capture(inp: proc_macro::TokenStream) -> proc_macro::TokenStream {
     main(inp.into(), false).into()
 }
 
-/// Allows specifying how a closure should capture variables.
+/// Captures only the listed variables into the closure.
 ///
 /// See the [crate level documentation][`crate`] for more info.
 #[proc_macro]
