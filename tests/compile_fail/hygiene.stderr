@@ -1,0 +1,7 @@
+error[E0425]: cannot find value `b` in this scope
+  --> tests/compile_fail/hygiene.rs:10:18
+   |
+10 |         total += b;
+   |                  ^ not found in this scope
+   |
+   = note: this error originates in the macro `capture_only` (in Nightly builds, run with -Z macro-backtrace for more info)

@@ -1,0 +1,91 @@
+error: expected `ref`, `clone`, `with`, or `all`
+ --> tests/compile_fail/syntax.rs:6:9
+  |
+6 |         garbage a,
+  |         ^^^^^^^
+
+error: expected `ref`, `clone`, `with`, or `all`
+ --> tests/compile_fail/syntax.rs:7:9
+  |
+7 |         garbage a b c d e f,
+  |         ^^^^^^^
+
+error: expected `ref`, `clone`, `with`, or `all`
+ --> tests/compile_fail/syntax.rs:8:9
+  |
+8 |         mut garbage a b,
+  |         ^^^
+
+error: may not use mutability specifier with `all` directive
+ --> tests/compile_fail/syntax.rs:9:13
+  |
+9 |         all mut a,
+  |             ^^^
+
+error: expected identifier
+  --> tests/compile_fail/syntax.rs:10:19
+   |
+10 |         clone mut mut,
+   |                   ^^^
+
+error: expected identifier
+  --> tests/compile_fail/syntax.rs:11:15
+   |
+11 |         clone ;,
+   |               ^
+
+error: expected `,`
+  --> tests/compile_fail/syntax.rs:12:19
+   |
+12 |         ref clone a,
+   |                   ^
+
+error: expected `ref`, `clone`, `with`, or `all`
+  --> tests/compile_fail/syntax.rs:12:19
+   |
+12 |         ref clone a,
+   |                   ^
+
+error: expected `ref`, `clone`, `with`, or `all`
+  --> tests/compile_fail/syntax.rs:13:9
+   |
+13 |         mut clone a,
+   |         ^^^
+
+error: expected `=`
+  --> tests/compile_fail/syntax.rs:14:20
+   |
+14 |         with clone b = ex,
+   |                    ^
+
+error: expected expression
+  --> tests/compile_fail/syntax.rs:15:18
+   |
+15 |         with a = ref mut,
+   |                  ^^^
+
+error: expected `,`
+  --> tests/compile_fail/syntax.rs:16:20
+   |
+16 |         with a = 1 2 3 4,
+   |                    ^
+
+error: expected `ref`, `clone`, `with`, or `all`
+  --> tests/compile_fail/syntax.rs:16:20
+   |
+16 |         with a = 1 2 3 4,
+   |                    ^
+
+error: expected `|`
+  --> tests/compile_fail/syntax.rs:5:5
+   |
+5  | /     capture!(
+6  | |         garbage a,
+7  | |         garbage a b c d e f,
+8  | |         mut garbage a b,
+...  |
+16 | |         with a = 1 2 3 4,
+17 | |     );
+   | |______^
+   |
+   = note: this error originates in the macro `capture` (in Nightly builds, run with -Z macro-backtrace for more info)

@@ -1,0 +1,21 @@
+error[E0373]: closure may outlive the current function, but it borrows `a`, which is owned by the current function
+  --> tests/compile_fail/infer_move.rs:12:9
+   |
+12 |         || { a += 2; a }
+   |         ^^   - `a` is borrowed here
+   |         |
+   |         may outlive borrowed value `a`
+   |
+note: function requires argument type to outlive `'static`
+  --> tests/compile_fail/infer_move.rs:10:13
+   |
+10 |       let _ = takes_static(capture!(
+   |  _____________^
+11 | |         all a,
+12 | |         || { a += 2; a }
+13 | |     ));
+   | |______^
+help: to force the closure to take ownership of `a` (and any other referenced variables), use the `move` keyword
+   |
+12 |         move || { a += 2; a }
+   |         ++++

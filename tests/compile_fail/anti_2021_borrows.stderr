@@ -1,0 +1,11 @@
+error[E0506]: cannot assign to `a.1` because it is borrowed
+ --> tests/compile_fail/anti_2021_borrows.rs:7:5
+  |
+6 |     let f = capture!(all a, || a.0 + 1);
+  |                          -  -- borrow of `a.1` occurs here
+  |                          |
+  |                          borrow occurs due to use in closure
+7 |     a.1 += 1;
+  |     ^^^^^^^^ assignment to borrowed `a.1` occurs here
+8 |     f();
+  |     - borrow later used here
